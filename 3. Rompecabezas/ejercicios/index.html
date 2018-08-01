@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ejercicios con Arrays</title>
+</head>
+
+<body>
+    <script>
+        var array = [1, 2, 3, 4, 5];
+        console.log('Ejercicio N°1: ' + array.length);
+
+        var array2 = [2, 4, 6, 8, 10];
+        var suma = array2[0] + array2[1] + array2[2] + array2[3] + array2[4];
+        console.log('Ejercicio N°2: ' + suma);
+
+
+        var programaMes = parseInt(prompt('Ingrese un mes') - 1);
+        var mes = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre',
+            'noviembre', 'diciembre'
+        ];
+
+        console.log('Ejercicio N°3: El mes es: ' + mes[programaMes]);
+
+        var notas = [3, 8, 9, 4, 7];
+
+        function notasAltas() {
+            var aprobado = 0;
+            if (notas[0] >= 7) {
+                aprobado++;
+            }
+            if (notas[1] >= 7) {
+                aprobado++;
+            }
+            if (notas[2] >= 7) {
+                aprobado++;
+            }
+            if (notas[3] >= 7) {
+                aprobado++;
+            }
+            if (notas[4] >= 7) {
+                aprobado++;
+            }
+            return aprobado;
+        }
+        console.log('Ejercicio N°4: Aprobaron ' + notasAltas() + ' alumnos');
+    </script>
+</body>
+
+</html>
