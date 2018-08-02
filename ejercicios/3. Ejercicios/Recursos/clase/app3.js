@@ -12,3 +12,6 @@ function mostrarPersona(nombre, edad, cremonero) {
 }
 
 // Actividad: usar la función mostrarPersona para ver en la consola la información de los alumnos
+mostrarPersona(alumnos[0][0], alumnos[0][1], alumnos[0][2]);
+mostrarPersona(alumnos[1][0], alumnos[1][1], alumnos[1][2]);
+mostrarPersona(alumnos[2][0], alumnos[2][1], alumnos[2][2]);

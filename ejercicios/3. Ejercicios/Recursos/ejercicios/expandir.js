@@ -32,14 +32,20 @@ var fila = parseInt(prompt('Ingrese un número de fila (1 a 4)'));
 var columna = parseInt(prompt('Ingrese un número de columna (1 a 3)'));
 
 function expandir(numeroFila, numeroColumna, caracter) {
-
+    fila = numeroFila;
+    columna = numeroColumna;
+    matriz[fila] = ['0', '0', '0'];
+    matriz[0][columna] = '0';
+    matriz[1][columna] = '0';
+    matriz[2][columna] = '0';
+    matriz[3][columna] = '0';
 }
 
 // Muestro por consola el "antes"
-console.log(matriz);
+console.table(matriz);
 
 // Aplico la transformación
 expandir(fila, columna, 'O');
 
 // Muestro el resultado final
-console.log(matriz);
+console.table(matriz);
