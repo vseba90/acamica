@@ -22,7 +22,7 @@ Para eso deberás usar la función ya implementada mostrarInstruccionEnLista().
 Podés ver su implementación en la ultima parte de este codigo. */
 function mostrarInstrucciones(instrucciones) {
     var instrucciones = ['Hola', 'hola2'];
-    for(var i = 0; i < instrucciones.length; i++){
+    for(var i = 0; i <= instrucciones.length; i++){
       document.getElementById("lista-instrucciones").innerHTML = instrucciones[i];
     }
 }
