@@ -69,7 +69,6 @@ body {
   width: 128px;
   height: 50px;
   border-radius: 50px;
-  background: #f37043;
 }
 .buddha .tail {
   position: absolute;
@@ -78,7 +77,10 @@ body {
   width: 98px;
   height: 82px;
   border-radius: 38px;
-  background: #f37043;
+}
+.tail.random, .legs.random {
+  -webkit-animation: random 4s ease infinite;
+  animation: random 4s ease infinite;
 }
 .buddha .head {
   position: absolute;
@@ -88,6 +90,10 @@ body {
   height: 124px;
   border-radius: 124px;
   background: #f2bc9b;
+  transition: all 10s ease;
+}
+.head:hover {
+  transform: rotate(720deg);
 }
 .buddha .ears {
   position: absolute;
@@ -165,6 +171,20 @@ body {
   -webkit-animation: animShadow 3s ease-in-out infinite;
   animation: animShadow 3s ease-in-out infinite;
 }
+
+@keyframes random {
+  0%,
+  100% {
+    background: #f37043;
+  }
+  33% {
+    background: #4caf50;
+  }
+  66% {
+    background: #9c27b0;
+  }
+
+}
 @-webkit-keyframes animShadow {
   0%,
   100% {
@@ -210,8 +230,8 @@ body {
   }
 }
 .main:hover .buddha .head {
-  -webkit-animation: animTopBottom 0.25s infinite;
-  animation: animTopBottom 0.25s infinite;
+  -webkit-animation: animTopBottom 1s infinite;
+  animation: animTopBottom 1s infinite;
 }
 @-webkit-keyframes animTopBottom {
   0%,
@@ -219,9 +239,17 @@ body {
     -webkit-transform: translateY(0);
     transform: translateY(0);
   }
+  25% {
+    -webkit-transform: translateY(-25px);
+    transform: translateY(-25px);
+  }
   50% {
-    -webkit-transform: translateY(-5px);
-    transform: translateY(-5px);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+  75% {
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg);
   }
 }
 @keyframes animTopBottom {
@@ -230,8 +258,16 @@ body {
     -webkit-transform: translateY(0);
     transform: translateY(0);
   }
+  25% {
+    -webkit-transform: translateY(-25px);
+    transform: translateY(-25px);
+  }
   50% {
-    -webkit-transform: translateY(-5px);
-    transform: translateY(-5px);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+  75% {
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg);
   }
 }

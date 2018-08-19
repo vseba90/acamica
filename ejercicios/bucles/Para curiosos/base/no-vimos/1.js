@@ -10,6 +10,16 @@ window.onload = () => {
     .catch(err => console.error(err));
 };
 
+document.body.appendChild(carton);
+var carton = document.createElement('div');
+carton.classList.add('carton');
+var cuadrados = document.createElement('div');
+cuadrados.classList.add('cuadrados');
+
 function dibujarCartones(cartones) {
-    console.log(cartones);
+    for(var i = 0; i < cartones.lenght; i++){
+        carton.appendChild(cuadrados);
+    }
 }
+
+dibujarCartones();

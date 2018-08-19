@@ -1,0 +1,26 @@
+.carton {
+    width: 900px;
+    margin: 0 auto;
+    background: rgba(255, 165, 0, 0.1);
+    display: inline-block;
+    padding: 20px;
+}
+.carton-container {
+    border: 1px solid orange;
+    float: left;
+    width: 100%;
+}
+.cuadrado {
+    float: left;
+    width: 100px;
+    height: 100px;
+    border: 1px solid orange;
+    box-sizing: border-box;
+    color: orange;
+    font-size: 42px;
+    font-family: sans-serif;
+    padding: 25px;
+}
+.cuadrado:empty {
+    background: rgba(255, 165, 0, 0.5);
+}
