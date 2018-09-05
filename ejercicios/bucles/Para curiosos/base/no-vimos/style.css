@@ -1,9 +1,10 @@
 .carton {
     width: 900px;
-    margin: 0 auto;
+    margin: 0 auto 20px;
     background: rgba(255, 165, 0, 0.1);
-    display: inline-block;
     padding: 20px;
+    height: 300px;
+
 }
 .carton-container {
     border: 1px solid orange;
