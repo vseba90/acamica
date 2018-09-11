@@ -1,14 +1,14 @@
 // Arreglo que contiene las intrucciones del juego 
-var instrucciones = [];
+var instrucciones = ['Presionando las teclas ARRIBA, ABAJO, DERECHA, IZQUIERDA para mover las flechas', 'Cuando termines de completar la imagen, ganaste'];
 // Arreglo para ir guardando los movimientos que se vayan realizando
 var movimientos = [];
 
 // Representación de la grilla. Cada número representa a una pieza.
 // El 9 es la posición vacía
 var grilla = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
 ];
 
 /* Estas dos variables son para guardar la posición de la pieza vacía. 
@@ -21,10 +21,7 @@ Cada elemento de este arreglo deberá ser mostrado en la lista con id 'lista-ins
 Para eso deberás usar la función ya implementada mostrarInstruccionEnLista().
 Podés ver su implementación en la ultima parte de este codigo. */
 function mostrarInstrucciones(instrucciones) {
-    var instrucciones = ['Hola', 'hola2'];
-    for(var i = 0; i <= instrucciones.length; i++){
-      document.getElementById("lista-instrucciones").innerHTML = instrucciones[i];
-    }
+  instrucciones.map(instruccion => mostrarInstruccionEnLista(instruccion, 'lista-instrucciones'));
 }
 
 /* COMPLETAR: Crear función que agregue la última dirección al arreglo de movimientos
@@ -33,19 +30,26 @@ y utilice actualizarUltimoMovimiento para mostrarlo en pantalla */
 /* Esta función va a chequear si el Rompecabezas esta en la posicion ganadora. 
 Existen diferentes formas de hacer este chequeo a partir de la grilla. */
 function chequearSiGano() {
-    //COMPLETAR
+  var cantFilas = grilla.length;
+  var cantColumnas = grilla[0].length;
+
+  function piezaCorrecta(fila, col) {
+    return grilla[fila][col] === fila * cantFilas + col + 1;
+  }
+  for (var fila = 0; fila < cantFilas; fila++) {
+    for (var col = 0; col < cantColumnas; col++) {
+      if (!piezaCorrecta(fila, col)) return false;
+    }
+  }
+  return true;
+
 }
 
 // Implementar alguna forma de mostrar un cartel que avise que ganaste el juego
 function mostrarCartelGanador() {
-    //COMPLETAR
+  alert('Felicitaciones, ha ganado el juego');
 }
-for( var i = 0; i < 0; i++){
-  for(var j = 0; i < 4; i++){
-   valorActual = grilla[0][j];
-    console.log(valorActual);
- }
-}
+
 /* Función que intercambia dos posiciones en la grilla.
 Pensar como intercambiar dos posiciones en un arreglo de arreglos. 
 Para que tengas en cuenta:
@@ -57,18 +61,23 @@ En vez de intercambiar esos valores vamos a terminar teniendo en ambas posicione
 Se te ocurre cómo solucionar esto con una variable temporal?
 */
 function intercambiarPosicionesGrilla(filaPos1, columnaPos1, filaPos2, columnaPos2) {
-    //COMPLETAR
+  var temp = grilla[filaPos1][columnaPos1];
+  grilla[filaPos1][columnaPos1] = grilla[filaPos2][columnaPos2];
+  grilla[filaPos2][columnaPos2] = temp;
 }
 
 // Actualiza la posición de la pieza vacía
 function actualizarPosicionVacia(nuevaFila, nuevaColumna) {
-    //COMPLETAR
+  filaVacia = nuevaFila;
+  columnaVacia = nuevaColumna;
 }
 
 
 // Para chequear si la posicón está dentro de la grilla.
 function posicionValida(fila, columna) {
-    //COMPLETAR
+  var filaMax = grilla.length -1;
+  var colMax = grilla[0].length - 1;
+  return fila >= 0 && fila <= filaMax && columna >= 0 && columna <= colMax;
 }
 
 /* Movimiento de fichas, en este caso la que se mueve es la blanca intercambiando su posición con otro elemento.
@@ -76,42 +85,50 @@ Las direcciones están dadas por números que representa: arriba (38), abajo (40
 function moverEnDireccion(direccion) {
   var nuevaFilaPiezaVacia;
   var nuevaColumnaPiezaVacia;
+  var movimiento;
 
   // Mueve pieza hacia la abajo, reemplazandola con la blanca
   if (direccion === codigosDireccion.ABAJO) {
     nuevaFilaPiezaVacia = filaVacia - 1;
     nuevaColumnaPiezaVacia = columnaVacia;
+    movimiento = 'abajo';
   }
-    
+
   // Mueve pieza hacia arriba, reemplazandola con la blanca
   else if (direccion === codigosDireccion.ARRIBA) {
     nuevaFilaPiezaVacia = filaVacia + 1;
     nuevaColumnaPiezaVacia = columnaVacia;
+    movimiento = 'arriba';
   }
-    
+
   // Mueve pieza hacia la derecha, reemplazandola con la blanca
   else if (direccion === codigosDireccion.DERECHA) {
-    //COMPLETAR
+    nuevaFilaPiezaVacia = filaVacia;
+    nuevaColumnaPiezaVacia = columnaVacia - 1;
+    movimiento = 'derecha';
   }
-    
+
   // Mueve pieza hacia la izquierda, reemplazandola con la blanca
   else if (direccion === codigosDireccion.IZQUIERDA) {
-    // COMPLETAR
+    nuevaFilaPiezaVacia = filaVacia;
+    nuevaColumnaPiezaVacia = columnaVacia + 1;
+    movimiento = 'izquierda';
   }
 
   /* A continuación se chequea si la nueva posición es válida, si lo es, se intercambia. 
   Para que esta parte del código funcione correctamente deberás haber implementado 
   las funciones posicionValida, intercambiarPosicionesGrilla y actualizarPosicionVacia */
 
-    if (posicionValida(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia)) {
-        intercambiarPosiciones(filaVacia, columnaVacia, nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
-        actualizarPosicionVacia(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
-
-  //COMPLETAR: Agregar la dirección del movimiento al arreglo de movimientos
-
-    }
+  if (posicionValida(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia)) {
+    intercambiarPosiciones(filaVacia, columnaVacia, nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
+    actualizarPosicionVacia(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
+    guardarMovimiento(direccion);
+  }
 }
-
+function guardarMovimiento(direccion) {
+  movimientos.push(direccion);
+  actualizarUltimoMovimiento(direccion);
+}
 
 //////////////////////////////////////////////////////////
 ////////A CONTINUACIÓN FUNCIONES YA IMPLEMENTADAS.////////
@@ -129,10 +146,10 @@ el uso de números confusos en tu código. Para referirte a la dir
 izquierda, en vez de usar el número 37, ahora podés usar:
 codigosDireccion.IZQUIERDA. Esto facilita mucho la lectura del código. */
 var codigosDireccion = {
-    IZQUIERDA: 37,
-    ARRIBA: 38,
-    DERECHA: 39,
-    ABAJO: 40
+  IZQUIERDA: 37,
+  ARRIBA: 38,
+  DERECHA: 39,
+  ABAJO: 40
 }
 
 /* Funcion que realiza el intercambio logico (en la grilla) y ademas actualiza
@@ -203,17 +220,17 @@ function mezclarPiezas(veces) {
   if (veces <= 0) {
     return;
   }
-  
+
   var direcciones = [codigosDireccion.ABAJO, codigosDireccion.ARRIBA,
-      codigosDireccion.DERECHA, codigosDireccion.IZQUIERDA
-    ];
+    codigosDireccion.DERECHA, codigosDireccion.IZQUIERDA
+  ];
 
   var direccion = direcciones[Math.floor(Math.random() * direcciones.length)];
   moverEnDireccion(direccion);
 
-  setTimeout(function() {
-      mezclarPiezas(veces - 1);
-    }, 100);
+  setTimeout(function () {
+    mezclarPiezas(veces - 1);
+  }, 100);
 }
 
 /* capturarTeclas: Esta función captura las teclas presionadas por el usuario. Javascript
@@ -222,7 +239,7 @@ base a eso hacer algo. No es necesario que entiendas como funciona esto ahora,
 en el futuro ya lo vas a aprender. Por ahora, sólo hay que entender que cuando
 se toca una tecla se hace algo en respuesta, en este caso, un movimiento */
 function capturarTeclas() {
-  document.body.onkeydown = (function(evento) {
+  document.body.onkeydown = (function (evento) {
     if (evento.which === codigosDireccion.ABAJO ||
       evento.which === codigosDireccion.ARRIBA ||
       evento.which === codigosDireccion.DERECHA ||
@@ -230,24 +247,24 @@ function capturarTeclas() {
 
       moverEnDireccion(evento.which);
 
-        var gano = chequearSiGano();
-        if (gano) {
-          setTimeout(function() {
-              mostrarCartelGanador();
-              }, 500);
-            }
-            evento.preventDefault();
-        }
-    })
+      var gano = chequearSiGano();
+      if (gano) {
+        setTimeout(function () {
+          mostrarCartelGanador();
+        }, 500);
+      }
+      evento.preventDefault();
+    }
+  })
 }
 
 /* Se inicia el rompecabezas mezclando las piezas 60 veces 
 y ejecutando la función para que se capturen las teclas que 
 presiona el usuario */
 function iniciar() {
-    mostrarInstrucciones(instrucciones);
-    mezclarPiezas(30);
-    capturarTeclas();
+  mostrarInstrucciones(instrucciones);
+  mezclarPiezas(30);
+  capturarTeclas();
 }
 
 // Ejecutamos la función iniciar
