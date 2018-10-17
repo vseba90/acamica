@@ -79,7 +79,7 @@ function clickApretado() {
   mouseApretado = true;
 }
 
-//Funciones para cargar a los distintos personajes:
+
 $("#batman").click(function cargarBatman() {
   cargarSuperheroe(batman);
 });
@@ -100,24 +100,12 @@ $("#guardar").click(function guardarPixel() {
   guardarPixelArt();
 });
 
-//Funcionalidad nueva para borrar toda la grilla:
-
 $("#borrar").click(function borrarGrilla() {
   var grilla = $("#grilla-pixeles");
   var grillaPixeles = grilla.children();
   grillaPixeles.animate({
     "background-color": "white"
   }, 1000);
-});
-
-//Funcionalidad nueva para pintar todo el fondo de un color:
-
-$("#balde").click(function pintarFondo() {
-  var grilla = $("#grilla-pixeles");
-  var grillaPixeles = grilla.children();
-  grillaPixeles.css({
-    "background-color": indicador.style.backgroundColor
-  });
 });
 
 crearPaleta();
