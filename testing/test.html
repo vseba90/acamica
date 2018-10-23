@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test Mocha</title>
+  <link rel="stylesheet" href="js/test/mocha.css" />
+  <!-- <link href="https://unpkg.com/mocha@5.2.0/mocha.css" rel="stylesheet" /> -->
+  <style>
+     #fixture {
+      position: absolute;
+      top: -9999;
+      left: -9999;
+     };
+  </style>  
+  <script src="js/test/lib/jquery-1.11.2.js"></script>
+  <!-- <script src="https://unpkg.com/chai/chai.js"></script>
+  <script src="https://unpkg.com/mocha@5.2.0/mocha.js"></script> -->
+  <script src="js/test/test-lib/chai.js"></script>
+  <script src="js/test/test-lib/mocha.js"></script>
+  <script> mocha.setup('bdd');</script>
+  <script src="js/test/tests.js"></script>
+  <script src="js/suma.js"></script>
+  <script src="js/resta.js"></script>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+    window.onload = function() {
+         mocha.run()
+    };
+  </script>
+ </head>
+<body>
+  <div id="mocha"></div>
+</body>
+</html>
